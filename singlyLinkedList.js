@@ -74,6 +74,19 @@ class SinglyLinkedList {
     }
     return this;
   }
+  get(index) {
+    if (!this.head || this.length <= index || index < 0) {
+      return null;
+    } else {
+      let current = this.head;
+      let i = 0;
+      while (i < index) {
+        current = current.next;
+        i++;
+      }
+      return current;
+    }
+  }
 }
 let list = new SinglyLinkedList();
 console.log(list);
@@ -87,14 +100,18 @@ console.log(list.push(4));
 // console.log(list.pop());
 // console.log(list.pop());
 console.log(list);
-console.log(list.shift());
-console.log(list.shift());
-console.log(list.shift());
-console.log(list.shift());
-console.log(list.shift());
-console.log(list);
-console.log(list.unshift(5));
-console.log(list.unshift(4));
-console.log(list.unshift(3));
-console.log(list.unshift(2));
-console.log(list.unshift(1));
+// console.log(list.shift());
+// console.log(list.shift());
+// console.log(list.shift());
+// console.log(list.shift());
+// console.log(list.shift());
+// console.log(list);
+// console.log(list.unshift(5));
+// console.log(list.unshift(4));
+// console.log(list.unshift(3));
+// console.log(list.unshift(2));
+// console.log(list.unshift(1));
+console.log(list.get(2));
+console.log(list.get(-2));
+console.log(list.get(12));
+console.log(list.get(0));
