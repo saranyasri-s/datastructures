@@ -100,9 +100,9 @@ class SinglyLinkedList {
     if (index < 0 || index > this.length) {
       return false;
     } else if (index === 0) {
-      this.unshift(value);
+      return this.unshift(value);
     } else if (index === this.length) {
-      this.push(value);
+      return this.push(value);
     } else {
       let newNode = new Node(value);
       let nodeBeforeIndex = this.get(index - 1);
@@ -147,3 +147,5 @@ console.log(list.set(-100, 11));
 console.log(list);
 console.log(list.insert(2, 33));
 console.log(list.insert(3, 44));
+console.log(list.insert(0, 99));
+console.log(list.insert(7, 88));
