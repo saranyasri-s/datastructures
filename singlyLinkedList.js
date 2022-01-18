@@ -87,6 +87,15 @@ class SinglyLinkedList {
       return current;
     }
   }
+  set(index, value) {
+    if (index < 0 || index >= this.length) {
+      return false;
+    } else {
+      let getNode = this.get(index);
+      getNode.val = value;
+      return true;
+    }
+  }
 }
 let list = new SinglyLinkedList();
 console.log(list);
@@ -115,3 +124,7 @@ console.log(list.get(2));
 console.log(list.get(-2));
 console.log(list.get(12));
 console.log(list.get(0));
+console.log(list.set(0, 11));
+console.log(list.set(1, 22));
+console.log(list.set(-100, 11));
+console.log(list);
