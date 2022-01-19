@@ -128,13 +128,45 @@ class SinglyLinkedList {
       return removed;
     }
   }
+  reverse() {
+    if (!this.head) {
+      return false;
+    } else if (this.length === 1) {
+      return this;
+    } else if (this.length === 2) {
+      let temp = this.head;
+      this.head = this.tail;
+      temp.next = null;
+      this.head.next = temp;
+      this.tail = temp;
+    } else {
+      this.tail = this.head;
+      let current = this.head;
+      let a = this.head.next;
+      let b = a.next;
+      current.next = null;
+      while (b.next) {
+        a.next = current;
+        current = a;
+        a = b;
+        b = b.next;
+      }
+      a.next = current;
+      current = a;
+      b.next = current;
+      current = b;
+
+      this.head = current;
+      return this;
+    }
+  }
 }
 let list = new SinglyLinkedList();
 console.log(list);
 console.log(list.push(1));
-console.log(list.push(2));
-console.log(list.push(3));
-console.log(list.push(4));
+// console.log(list.push(2));
+// console.log(list.push(3));
+// console.log(list.push(4));
 // console.log(list.pop());
 // console.log(list.pop());
 // console.log(list.pop());
@@ -152,18 +184,19 @@ console.log(list);
 // console.log(list.unshift(3));
 // console.log(list.unshift(2));
 // console.log(list.unshift(1));
-console.log(list.get(2));
-console.log(list.get(-2));
-console.log(list.get(12));
-console.log(list.get(0));
-console.log(list.set(0, 11));
-console.log(list.set(1, 22));
-console.log(list.set(-100, 11));
-console.log(list);
-console.log(list.insert(2, 33));
-console.log(list.insert(3, 44));
-console.log(list.insert(0, 99));
-console.log(list.insert(7, 88));
-console.log(list.remove(7));
-console.log(list.remove(7));
-console.log(list.remove(0));
+// console.log(list.get(2));
+// console.log(list.get(-2));
+// console.log(list.get(12));
+// console.log(list.get(0));
+// console.log(list.set(0, 11));
+// console.log(list.set(1, 22));
+// console.log(list.set(-100, 11));
+// console.log(list);
+// console.log(list.insert(2, 33));
+// console.log(list.insert(3, 44));
+// console.log(list.insert(0, 99));
+// console.log(list.insert(7, 88));
+// console.log(list.remove(7));
+// console.log(list.remove(7));
+// console.log(list.remove(0));
+console.log(list.reverse());
