@@ -95,6 +95,15 @@ class DoublyLinkedList {
       }
     }
   }
+  set(index, value) {
+    if (index < 0 || index >= this.length) {
+      return false;
+    } else {
+      let gotNode = this.get(index);
+      gotNode.val = value;
+      return true;
+    }
+  }
 }
 let list = new DoublyLinkedList();
 console.log(list);
@@ -115,10 +124,16 @@ console.log(list.unshift(2));
 console.log(list.unshift(3));
 console.log(list.unshift(4));
 console.log(list.unshift(5));
-console.log(list.get(0));
-console.log(list.get(1));
-console.log(list.get(2));
-console.log(list.get(3));
-console.log(list.get(4));
-console.log(list.get(5));
-console.log(list.get(-5));
+// console.log(list.get(0));
+// console.log(list.get(1));
+// console.log(list.get(2));
+// console.log(list.get(3));
+// console.log(list.get(4));
+// console.log(list.get(5));
+// console.log(list.get(-5));
+console.log(list.set(0, 11));
+console.log(list.set(1, 22));
+console.log(list.set(2, 33));
+console.log(list.set(3, 44));
+console.log(list.set(4, 55));
+console.log(list.set(5, 66));
