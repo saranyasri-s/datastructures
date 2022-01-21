@@ -39,6 +39,33 @@ class Bst {
     checkForInsertion(val);
     return this;
   }
+  find(val) {
+    if (!this.root) return false;
+    let current = this.root;
+    function search(val) {
+      if (val === current.val) {
+        return true;
+      } else {
+        if (val > current.val) {
+          if (!current.right) {
+            return false;
+          } else {
+            current = current.right;
+            return search(val);
+          }
+        } else if (val < current.val) {
+          if (!current.left) {
+            return false;
+          } else {
+            current = current.left;
+            return search(val);
+          }
+        }
+      }
+    }
+    let result = search(val);
+    return result;
+  }
 }
 let tree = new Bst();
 console.log(tree);
@@ -50,3 +77,7 @@ console.log(tree.insert(3));
 console.log(tree.insert(4));
 console.log(tree.insert(100));
 console.log(tree.insert(99));
+console.log(tree.find(1));
+console.log(tree.find(100));
+console.log(tree.find(7));
+console.log(tree.find(4));
