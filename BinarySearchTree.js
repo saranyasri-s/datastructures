@@ -17,6 +17,7 @@ class Bst {
     }
     let current = this.root;
     function checkForInsertion(val) {
+      if (val === current.val) return undefined;
       if (val > current.val) {
         if (!current.right) {
           current.right = newNode;
@@ -25,7 +26,7 @@ class Bst {
           current = current.right;
           return checkForInsertion(val);
         }
-      } else {
+      } else if (val < current.val) {
         if (!current.left) {
           current.left = newNode;
           return this;
