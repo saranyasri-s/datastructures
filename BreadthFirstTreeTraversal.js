@@ -1,0 +1,123 @@
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
+class Bst {
+  constructor() {
+    this.root = null;
+  }
+  insert(val) {
+    let newNode = new Node(val);
+    if (!this.root) {
+      this.root = newNode;
+      return this;
+    }
+    let current = this.root;
+    function checkForInsertion(val) {
+      if (val === current.val) return undefined;
+      if (val > current.val) {
+        if (!current.right) {
+          current.right = newNode;
+          return this;
+        } else {
+          current = current.right;
+          return checkForInsertion(val);
+        }
+      } else if (val < current.val) {
+        if (!current.left) {
+          current.left = newNode;
+          return this;
+        } else {
+          current = current.left;
+          return checkForInsertion(val);
+        }
+      }
+    }
+    checkForInsertion(val);
+    return this;
+  }
+  find(val) {
+    if (!this.root) return false;
+    let current = this.root;
+    function search(val) {
+      if (val === current.val) {
+        return true;
+      } else {
+        if (val > current.val) {
+          if (!current.right) {
+            return false;
+          } else {
+            current = current.right;
+            return search(val);
+          }
+        } else if (val < current.val) {
+          if (!current.left) {
+            return false;
+          } else {
+            current = current.left;
+            return search(val);
+          }
+        }
+      }
+    }
+    let result = search(val);
+    return result;
+  }
+  traverseIteratively() {
+    let q = [];
+    let visited = [];
+    if (!this.root) return null;
+    q.push(this.root);
+    while (q[0]) {
+      visited.push(q[0].val);
+      if (q[0].right) {
+        q.push(q[0].right);
+      }
+      if (q[0].left) {
+        q.push(q[0].left);
+      }
+      q.shift();
+    }
+    return visited;
+  }
+  traverseRecursively() {
+    let q = [];
+    let visited = [];
+    if (!this.root) {
+      return null;
+    }
+    q.push(this.root);
+    function a(val) {
+      visited.push(val.val);
+      if (val.right) {
+        q.push(val.right);
+      }
+      if (val.left) {
+        q.push(val.left);
+      }
+      q.shift();
+      if (q[0]) {
+        a(q[0]);
+      } else {
+        return;
+      }
+    }
+    a(q[0]);
+    return visited;
+  }
+}
+let tree = new Bst();
+console.log(tree);
+tree.insert(11);
+console.log(tree);
+console.log(tree.insert(5));
+console.log(tree.insert(7));
+console.log(tree.insert(3));
+console.log(tree.insert(4));
+console.log(tree.insert(100));
+console.log(tree.insert(99));
+console.log(tree.traverseIteratively());
+console.log(tree.traverseRecursively());
