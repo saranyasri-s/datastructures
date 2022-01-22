@@ -66,23 +66,37 @@ class Bst {
     let result = search(val);
     return result;
   }
-  depthFirstTraversePreOrder(){
-      if(!this.root)return null;
-      let visited=[];
-      let current=this.root
-      function helper(current){
-visited.push(current.val);
-if(current.left){
-    helper(current.left)
-};
-if(current.right){
-    helper(current.right)
-}
-
+  depthFirstTraversePreOrder() {
+    if (!this.root) return null;
+    let visited = [];
+    let current = this.root;
+    function helper(current) {
+      visited.push(current.val);
+      if (current.left) {
+        helper(current.left);
       }
-      helper(current)
-      return visited
-
+      if (current.right) {
+        helper(current.right);
+      }
+    }
+    helper(current);
+    return visited;
+  }
+  depthFirstTraversePostOrder() {
+    if (!this.root) return null;
+    let visited = [];
+    let current = this.root;
+    function helper(current) {
+      if (current.left) {
+        helper(current.left);
+      }
+      if (current.right) {
+        helper(current.right);
+      }
+      visited.push(current.val);
+    }
+    helper(current);
+    return visited;
   }
 }
 let tree = new Bst();
@@ -95,4 +109,5 @@ console.log(tree.insert(3));
 console.log(tree.insert(4));
 console.log(tree.insert(100));
 console.log(tree.insert(99));
-console.log(tree.depthFirstTraversePreOrder())
+console.log(tree.depthFirstTraversePreOrder());
+console.log(tree.depthFirstTraversePostOrder());
