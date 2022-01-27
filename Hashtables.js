@@ -26,15 +26,12 @@ class HassTables {
   get(key) {
     let val;
     let hashIndex = this.hash(key);
-    if (this.arr[hashIndex].length === 1) {
-      val = this.arr[hashIndex][0];
-    } else {
-      for (let i = 0; i < this.arr[hashIndex].length; i++) {
-        let element = this.arr[hashIndex];
-        if (element[i][0] === key) {
-          val = element[i];
-          break;
-        }
+
+    for (let i = 0; i < this.arr[hashIndex].length; i++) {
+      let element = this.arr[hashIndex];
+      if (element[i][0] === key) {
+        val = element[i];
+        break;
       }
     }
     return val;
@@ -52,4 +49,5 @@ console.log(has.set("qsara", "good"));
 console.log(has.set("hsaia", "good"));
 console.log(has.get("aghil"));
 console.log(has.get("psara"));
-console.log(has.get("hsaia"));  
+console.log(has.get("hsaia"));
+console.log(has.get("hsadwsia"));
