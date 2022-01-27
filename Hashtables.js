@@ -23,10 +23,33 @@ class HassTables {
 
     return this.arr;
   }
+  get(key) {
+    let val;
+    let hashIndex = this.hash(key);
+    if (this.arr[hashIndex].length === 1) {
+      val = this.arr[hashIndex][0];
+    } else {
+      for (let i = 0; i < this.arr[hashIndex].length; i++) {
+        let element = this.arr[hashIndex];
+        if (element[i][0] === key) {
+          val = element[i];
+          break;
+        }
+      }
+    }
+    return val;
+  }
 }
-let has = new HassTables(30);
+let has = new HassTables(11);
 console.log(has);
 console.log(has.set("saran", "good"));
 console.log(has.set("santhose", "gold"));
 console.log(has.set("aghil", "vgood"));
-console.log(has.set("saran", "good"));
+console.log(has.set("ssara", "good"));
+console.log(has.set("ssira", "good"));
+console.log(has.set("psara", "good"));
+console.log(has.set("qsara", "good"));
+console.log(has.set("hsaia", "good"));
+console.log(has.get("aghil"));
+console.log(has.get("psara"));
+console.log(has.get("hsaia"));  
