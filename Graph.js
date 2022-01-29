@@ -20,6 +20,13 @@ class Graph {
     this.adjacencyList[v2].splice(indexofV1, 1);
     return this.adjacencyList;
   }
+  removeVertex(v1) {
+    while (this.adjacencyList[v1][0]) {
+      this.removeEdge(v1, this.adjacencyList[v1][0]);
+    }
+    delete this.adjacencyList[v1];
+    return this.adjacencyList;
+  }
 }
 
 let g = new Graph();
@@ -33,5 +40,6 @@ console.log(g.addEdge("coimbatore", "chennai"));
 console.log(g.addEdge("coimbatore", "madurai"));
 console.log(g.addEdge("coimbatore", "nellai"));
 console.log(g.addEdge("madurai", "chennai"));
-console.log(g.removeEdge("madurai", "chennai"));
-console.log(g.removeEdge("madurai", "coimbatore"));
+// console.log(g.removeEdge("madurai", "chennai"));
+// console.log(g.removeEdge("madurai", "coimbatore"));
+console.log(g.removeVertex("chennai"));
