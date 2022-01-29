@@ -36,6 +36,32 @@ class HassTables {
     }
     return val;
   }
+  keys() {
+    let keyss = [];
+    let ar = this.arr;
+    for (let i = 0; i < ar.length; i++) {
+      if (ar[i]) {
+        for (let j = 0; j < ar[i].length; j++) {
+          keyss.push(ar[i][j][0]);
+        }
+      }
+    }
+    return keyss;
+  }
+  values() {
+    let valuess = [];
+    let ar = this.arr;
+    for (let i = 0; i < ar.length; i++) {
+      if (ar[i]) {
+        for (let j = 0; j < ar[i].length; j++) {
+          if (!valuess.includes(ar[i][j][1])) {
+            valuess.push(ar[i][j][1]);
+          }
+        }
+      }
+    }
+    return valuess;
+  }
 }
 let has = new HassTables(11);
 console.log(has);
@@ -51,3 +77,5 @@ console.log(has.get("aghil"));
 console.log(has.get("psara"));
 console.log(has.get("hsaia"));
 console.log(has.get("hsadwsia"));
+console.log(has.keys());
+console.log(has.values());
