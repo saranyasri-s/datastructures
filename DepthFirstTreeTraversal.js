@@ -82,6 +82,22 @@ class Bst {
     helper(current);
     return visited;
   }
+  depthFirstTraverseInOrder() {
+    if (!this.root) return null;
+    let visited = [];
+    let current = this.root;
+    function helper(current) {
+      if (current.left) {
+        helper(current.left);
+      }
+      visited.push(current.val);
+      if (current.right) {
+        helper(current.right);
+      }
+    }
+    helper(current);
+    return visited;
+  }
   depthFirstTraversePostOrder() {
     if (!this.root) return null;
     let visited = [];
@@ -103,11 +119,12 @@ let tree = new Bst();
 console.log(tree);
 tree.insert(11);
 console.log(tree);
-console.log(tree.insert(5));
+console.log(tree.insert(52));
 console.log(tree.insert(7));
-console.log(tree.insert(3));
+console.log(tree.insert(31));
 console.log(tree.insert(4));
 console.log(tree.insert(100));
 console.log(tree.insert(99));
 console.log(tree.depthFirstTraversePreOrder());
 console.log(tree.depthFirstTraversePostOrder());
+console.log(tree.depthFirstTraverseInOrder());
