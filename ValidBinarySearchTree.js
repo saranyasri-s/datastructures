@@ -9,36 +9,8 @@ class BST {
   constructor() {
     this.head = null;
   }
-  add(val) {
-    let newNode = new Node(val);
-    if (!this.head) {
-      this.head = newNode;
-    } else {
-      let current = this.head;
 
-      function helper(val) {
-        if (val < current.val) {
-          if (!current.left) {
-            current.left = newNode;
-          } else {
-            current = current.left;
-            helper(val);
-          }
-        } else {
-          if (!current.right) {
-            current.right = newNode;
-          } else {
-            current = current.right;
-            helper(val);
-          }
-        }
-      }
-      helper(val);
-    }
-    return this.head;
-  }
-
-  traverseBradthFirst() {
+  traverseBreadthFirst() {
     let q = [];
     let result = [];
     if (!this.head) {
@@ -61,11 +33,6 @@ class BST {
       }
     }
     return true;
-    //   let finalResult = [];
-    //   for (let i = 0; i < result.length; i++) {
-    //     finalResult.push(result[i].val);
-    //   }
-    //   return finalResult;
   }
   check(val) {
     let current = this.head;
@@ -89,11 +56,7 @@ class BST {
       }
     }
     let b = checkValidity(val);
-    if (b) {
-      return true;
-    } else {
-      return false;
-    }
+    return b;
   }
 }
 let tri = new BST();
@@ -103,7 +66,7 @@ let newNode2 = new Node(5);
 tri.head.left = newNode2;
 let newNode3 = new Node(25);
 tri.head.right = newNode3;
-let newNode4 = new Node(12);
+let newNode4 = new Node(2);
 tri.head.left.left = newNode4;
 let newNode5 = new Node(10);
 tri.head.left.right = newNode5;
@@ -111,10 +74,4 @@ let newNode6 = new Node(17);
 tri.head.right.left = newNode6;
 console.log(tri);
 
-// tri.head.left = 5;
-// tri.head.right = 25;
-// tri.head.left.left = 2;
-// tri.head.left.right = 10;
-// tri.head.right.left = 17;
-// tri.head.right.right = 35;
-console.log(tri.traverseBradthFirst());
+console.log(tri.traverseBreadthFirst());
