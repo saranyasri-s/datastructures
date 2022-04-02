@@ -4,7 +4,7 @@ function canSpell(mag, word) {
     if (!newMagObj[mag[i]]) {
       newMagObj[mag[i]] = 1;
     } else {
-      newMagObj[mag[i]]++;
+      newMagObj[mag[i]] = newMagObj[letter] + 1;
     }
   }
   let result = true;
@@ -13,7 +13,7 @@ function canSpell(mag, word) {
       result = false;
       break;
     } else {
-      newMagObj[letter]--;
+      newMagObj[letter] = newMagObj[letter] - 1;
     }
   }
   return result;
