@@ -9,8 +9,8 @@ class BST {
   constructor() {
     this.head = null;
   }
-
-  traverseBreadthFirst() {
+  // while breadth wise traversing the tree provided,checking whether each number is in the correct position of a binary search tree
+  traverseBreadthFirstAndCheckValidity() {
     let q = [];
     let result = [];
     if (!this.head) {
@@ -20,7 +20,7 @@ class BST {
     while (q.length) {
       let removed = q.shift();
       result.push(removed);
-      let a = this.check(removed.val);
+      let a = this.checkValidity(removed.val);
       if (!a) {
         return false;
       } else {
@@ -34,7 +34,7 @@ class BST {
     }
     return true;
   }
-  check(val) {
+  checkValidity(val) {
     let current = this.head;
     function checkValidity(val) {
       if (val === current.val) {
@@ -74,4 +74,4 @@ let newNode6 = new Node(17);
 tri.head.right.left = newNode6;
 console.log(tri);
 
-console.log(tri.traverseBreadthFirst());
+console.log(tri.traverseBreadthFirstAndCheckValidity());
