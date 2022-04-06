@@ -4,20 +4,11 @@
 function sumTwoNumForTarget(arr, target) {
   let obj = {};
   for (let i = 0; i < arr.length; i++) {
-    obj[arr[i]] = 1;
-  }
-
-  let indexNum1;
-  let num2;
-  for (let i = 0; i < arr.length; i++) {
+    obj[arr[i]] = i;
     let checkNumber = target - arr[i];
     if (obj[checkNumber]) {
-      num2 = checkNumber;
-      indexNum1 = i;
-      break;
+      return [i, obj[checkNumber]];
     }
   }
-  let indexNum2 = arr.indexOf(num2);
-  return [indexNum1, indexNum2];
 }
 console.log(sumTwoNumForTarget([4, 1, 77, 11, 3], 88));
