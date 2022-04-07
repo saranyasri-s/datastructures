@@ -11,4 +11,4 @@ function sumTwoNumForTarget(arr, target) {
     }
   }
 }
-console.log(sumTwoNumForTarget([4, 1, 77, 11, 3], 88));
+console.log(sumTwoNumForTarget([4, 12, 11, 77, 3], 88));
