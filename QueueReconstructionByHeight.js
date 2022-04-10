@@ -1,6 +1,6 @@
-
-
 function QueueReconstructionByHeight(arr) {
+  // first iam sorting the blockers and height of each
+  // person simultaneously,using radix type of sorting algorithm
   let helperArr = [];
   for (let i = 0; i < arr.length; i++) {
     let sortIndex = arr[i][1];
@@ -15,6 +15,8 @@ function QueueReconstructionByHeight(arr) {
       helperArr[sortIndex] = [arr[i]];
     }
   }
+  console.log(helperArr);
+
   let resultArr = [];
   for (let i = 0; i < helperArr.length; i++) {
     if (helperArr[i]) {
@@ -23,7 +25,9 @@ function QueueReconstructionByHeight(arr) {
       }
     }
   }
+  console.log(resultArr);
 
+  // now i am going to rearrange each person according to the blockers in correct position
   for (let i = 1; i < resultArr.length; i++) {
     let num = 0;
     let index;
