@@ -39,10 +39,7 @@ function TopKfrequentElements(arr, k) {
 }
 
 console.log(
-  TopKfrequentElements(
-    [111, 22, 32, 1, 2, 32, 111, 22, 32, 32, 32, 1, 1, 1, 1, 1, 1, 1],
-    2
-  )
+  TopKfrequentElements([111, 22, 32, 1, 2, 32, 111, 22, 32, 32, 32, 1], 3)
 );
 
 // time complexity
