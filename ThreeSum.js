@@ -1,9 +1,9 @@
-function ThreeSum(nums) {
+var threeSum = function (nums) {
+  // merge sort function//
   function helperMerge(left, right) {
     let arr = [];
-    // Break out of loop if any one of the array gets empty
+
     while (left.length && right.length) {
-      // Pick the smaller among the smallest element of left and right sub arrays
       if (left[0] < right[0]) {
         arr.push(left.shift());
       } else {
@@ -24,10 +24,12 @@ function ThreeSum(nums) {
     return helperMerge(mergeSort(left), mergeSort(array));
   }
 
+  //create separate arrays for negative, positive numbers//
   let negArr = [];
 
   let sortedArr = mergeSort(nums);
   let posArr = [];
+  //create an obj to store the elements with it repetition times in the given array//
   let obj = {};
   let resultArr = [];
 
@@ -43,9 +45,13 @@ function ThreeSum(nums) {
       posArr.push(sortedArr[i]);
     }
   }
+
+  //if more than 2 zeros are present in the given array push that triplet to the resultArray//
   if (obj[0] > 2) {
     resultArr.push([0, 0, 0]);
   }
+
+  //loop over the positive array and find the 2 negative numbers which helps to form the triplet//
   for (let i = 0; i < negArr.length; i++) {
     if (negArr[i] === negArr[i - 1]) {
     } else {
@@ -84,6 +90,7 @@ function ThreeSum(nums) {
     }
   }
 
+  //loop over the negative array and find the 2 positive numbers which helps to form the triplet//
   for (let i = 0; i < posArr.length; i++) {
     if (posArr[i] !== posArr[i - 1]) {
       let middle = Math.floor(posArr[i] / 2);
@@ -112,6 +119,7 @@ function ThreeSum(nums) {
       }
     }
   }
+
   return resultArr;
-}
+};
 console.log(ThreeSum([-1, 0, 1, 2, -1, -4, -2, -3, 3, 0, 4]));
